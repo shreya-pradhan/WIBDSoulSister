@@ -23,13 +23,19 @@ def show_survey_questions() :
         row = sheet.max_row+1
         col=1;
         for ans in anwsers:
-            st.write(f' {ans} {row}{col} ')
             sheet.cell(row,col).value=ans;
             col=col+1;
+            wb.save(filename)
+        wb = load_workbook(filepath)
+        sheet = wb.worksheets[0]
+        max_row = sheet.max_row + 1
+        max_col=sheet.max_column+1
+        for i in range(1, max_row):
+            for j in range(1,max_col):
+                cell_obj = sheet.cell(row=i, column=j)
+                st.write(f' {i},{j} : {cell_obj.value} ')
         wb.save(filename)
-        st.write(f' {row} rows in sheet ')
-        st.write(f'hello {email} your information has been saved')
-        st.write(f' {socialmedia}  {kryptonite} {success} {energy}')
+
 
 
 
