@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 from openpyxl import load_workbook
 
 def show_survey_questions() :
@@ -12,8 +13,12 @@ def show_survey_questions() :
     submit_button = userform.form_submit_button(label='Submit')
 
     if(submit_button) :
+        dirname = os.path.dirname(__file__)
+        filepath= os.path.join(dirname, filename)
+        st.write(dirname)
+        st.write(filepath)
         anwsers=[email,kryptonite,success,energy,socialmedia]
-        wb = load_workbook(filename)
+        wb = load_workbook(filepath)
         sheet = wb.worksheets[0]
         row = sheet.max_row+1
         col=1;
