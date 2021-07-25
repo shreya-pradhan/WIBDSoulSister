@@ -2,14 +2,18 @@ import streamlit
 from oauth2client.service_account import ServiceAccountCredentials
 import gspread
 import json
+import os
 import  streamlit as st
 
 def Authenticate_user():
+    filename = "wibdsoulsister.json"
+    dirname = os.path.dirname(__file__)
+    filepath = os.path.join(dirname, filename)
     scopes = [
         'https://www.googleapis.com/auth/spreadsheets',
         'https://www.googleapis.com/auth/drive'
     ]
-    credentials = ServiceAccountCredentials.from_json_keyfile_name("wibdsoulsister.json",
+    credentials = ServiceAccountCredentials.from_json_keyfile_name(filepath,
                                                                    scopes)  # access the json key you downloaded earlier
     file = gspread.authorize(credentials)  # authenticate the JSON key with gspread
     sheet = file.open("WIBD Soul Sister Survey")  # open sheet
