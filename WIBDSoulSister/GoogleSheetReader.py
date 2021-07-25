@@ -6,7 +6,7 @@ import os
 import  streamlit as st
 
 def Authenticate_user():
-    filename = "wibdsoulsister.json"
+    filename = "wibdsoulsistersecret.json"
     dirname = os.path.dirname(__file__)
     filepath = os.path.join(dirname, filename)
     scopes = [
@@ -15,7 +15,7 @@ def Authenticate_user():
     ]
     credentials =  st.secrets["jsonkey"]
     #ServiceAccountCredentials.from_json_keyfile_name(filepath,
-                                                                   scopes)  # access the json key you downloaded earlier
+    # scopes)  # access the json key you downloaded earlier
     file = gspread.authorize(credentials)  # authenticate the JSON key with gspread
     sheet = file.open("WIBD Soul Sister Survey")  # open sheet
     sheet=sheet.sheet1
