@@ -13,7 +13,8 @@ def Authenticate_user():
         'https://www.googleapis.com/auth/spreadsheets',
         'https://www.googleapis.com/auth/drive'
     ]
-    credentials = ServiceAccountCredentials.from_json_keyfile_name(filepath,
+    credentials =  st.secrets["jsonkey"]
+    #ServiceAccountCredentials.from_json_keyfile_name(filepath,
                                                                    scopes)  # access the json key you downloaded earlier
     file = gspread.authorize(credentials)  # authenticate the JSON key with gspread
     sheet = file.open("WIBD Soul Sister Survey")  # open sheet
